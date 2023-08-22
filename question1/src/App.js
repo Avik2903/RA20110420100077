@@ -1,38 +1,17 @@
-import React, { useState } from 'react';
-import UrlInput from './components/UrlInput';
+import CheckboxList from "./components/CheckboxComponent";
+import Header from "./components/Header";
 
-function App() {
-  const [urls, setUrls] = useState(['']); 
-
-  const handleAddUrl = () => {
-    setUrls([...urls, '']);
-  };
-
-  const handleRemoveUrl = (index) => {
-    const newUrls = [...urls];
-    newUrls.splice(index, 1);
-    setUrls(newUrls);
-  };
-
-  const handleUrlChange = (value, index) => {
-    const newUrls = [...urls];
-    newUrls[index] = value;
-    setUrls(newUrls);
-  };
-
+export default function App() {
   return (
-    <div className="App">
-      {urls.map((url, index) => (
-        <UrlInput
-          key={index}
-          value={url}
-          onChange={(e) => handleUrlChange(e.target.value, index)}
-          onRemove={() => handleRemoveUrl(index)}
-        />
-      ))}
-      <button onClick={handleAddUrl}>Add URL</button>
+    <>
+    <section>
+      <Header/>
+    </section>
+    <div className="flex justify-center">
+    <section className="m-5 border-4 border-gray-500 w-max p-4 ">
+      <CheckboxList/>
+    </section>
     </div>
-  );
+    </>
+  )
 }
-
-export default App;
